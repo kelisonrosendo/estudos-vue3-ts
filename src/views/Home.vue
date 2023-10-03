@@ -1,7 +1,5 @@
 <template>
-  <div>Home</div>
+  <div class="flex justify-center">
+    <img src="@/assets/logo.png" alt="Rick and Morty Logo" />
+  </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style scoped></style>

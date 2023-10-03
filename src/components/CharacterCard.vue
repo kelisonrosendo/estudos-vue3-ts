@@ -32,20 +32,20 @@ interface Locations {
 
 interface Props {
   name: string
-  image?: string
-  status?: string
-  specie?: string
-  location?: Locations
+  image: string
+  status: string
+  specie: string
+  location: Locations
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  name: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
+  image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
   status: 'unknown',
   specie: 'Unknown'
 })
 
 const computedStatus = computed<string>(() => {
-  interface Enums {
+  interface Enum {
     unknown: string
     Dead: string
     Alive: string
@@ -57,6 +57,6 @@ const computedStatus = computed<string>(() => {
     Alive: 'bg-green-400 hover:bg-green-500 text-slate-800 cursor-pointer'
   }
 
-  return statusEnum[props.status as keyof Enums]
+  return statusEnum[props.status as keyof Enum]
 })
 </script>
