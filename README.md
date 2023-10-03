@@ -12,9 +12,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Gerenciamento de estados: Pinia](https://pinia.vuejs.org/)
 - [Testes unitários: Vitest](https://vitest.dev/)
 
-### 🎮 Rodar aplicação
+Api utilizada pra os testes:
 
-#### Frontend
+- [The Rick and Morty API](https://rickandmortyapi.com/)
+
+### 🎮 Rodar aplicação
 
 1. Clone o projeto
 2. Instale as dependências
