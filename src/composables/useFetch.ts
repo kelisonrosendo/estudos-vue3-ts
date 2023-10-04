@@ -1,12 +1,20 @@
 import { useQuery } from '@tanstack/vue-query'
+interface Param {
+  key: string
+  url: string
+}
 
-export async function useFetch(key: string, url: string) {
-  const getData = async () => await fetch(url).then((response) => response.json())
-
-  const { isLoading, data } = useQuery({
+const useFetch = ({ key, url }: Param) => {
+  const { isLoading, isFetching, data } = useQuery({
     queryKey: [key],
-    queryFn: getData
+    queryFn: async () => await fetch(url).then((response) => response.json())
   })
 
-  return { isLoading, data }
+  return {
+    isLoading,
+    isFetching,
+    data
+  }
 }
+
+export default useFetch

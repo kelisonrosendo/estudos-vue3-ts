@@ -1,6 +1,5 @@
-import { toRaw } from 'vue'
 import { defineStore } from 'pinia'
-import { useQuery } from '@tanstack/vue-query'
+import { useFetch } from '@/composables'
 
 interface Info {
   count: number
@@ -35,19 +34,14 @@ export const useCharactersStore = defineStore('characters', {
   }),
 
   actions: {
-    getData(url = 'https://rickandmortyapi.com/api/character') {
-      const getCharacters = async (): Promise<State> =>
-        await fetch(url).then((response) => response.json())
-
-      const { data } = useQuery({
-        queryKey: ['characters'],
-        queryFn: getCharacters
+    async getData(url = 'https://rickandmortyapi.com/api/character') {
+      const { data } = useFetch({
+        key: 'characters',
+        url
       })
 
-      console.log(data)
-
-      this.info = toRaw(data)
-      this.results = toRaw(data)
+      this.info = data.value.info
+      this.results = data.value.results
     }
   }
 })
