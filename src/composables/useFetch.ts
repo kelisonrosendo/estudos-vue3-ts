@@ -1,24 +1,12 @@
-import { ref } from 'vue'
+import { useQuery } from '@tanstack/vue-query'
 
-export async function useFetch(url: string) {
-  const data = ref<Array<any>>([])
-  const error = ref<any>(null)
-  const loading = ref<boolean>(false)
+export async function useFetch(key: string, url: string) {
+  const getData = async () => await fetch(url).then((response) => response.json())
 
-  const fetchData = async () => {
-    loading.value = true
+  const { isLoading, data } = useQuery({
+    queryKey: [key],
+    queryFn: getData
+  })
 
-    try {
-      const response = await fetch(url)
-      data.value = await response.json()
-    } catch (err) {
-      error.value = err
-    } finally {
-      loading.value = false
-    }
-  }
-
-  await fetchData()
-
-  return { data, loading, error }
+  return { isLoading, data }
 }

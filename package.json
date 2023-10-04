@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@tanstack/vue-query": "^4.35.7",
     "@vueuse/core": "^10.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
