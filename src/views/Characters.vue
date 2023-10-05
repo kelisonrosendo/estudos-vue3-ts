@@ -1,10 +1,10 @@
 <template>
-  <div v-if="isLoading">
+  <div v-if="characterStore.isLoading">
     <Loader />
   </div>
   <div v-else class="max-w-[1230px] m-auto">
     <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
-      <div v-for="character in data?.results" :key="character.id">
+      <div v-for="character in characterStore.results" :key="character.id">
         <CharacterCard
           :name="character.name"
           :image="character.image"
@@ -19,10 +19,8 @@
 
 <script setup lang="ts">
 import { CharacterCard, Loader } from '@/components'
-import { useFetch } from '@/composables'
+import { useCharactersStore } from '@/stores/Characters'
 
-const { isLoading, data } = useFetch({
-  key: 'characters',
-  url: 'https://rickandmortyapi.com/api/character'
-})
+const characterStore = useCharactersStore()
+await characterStore.getData()
 </script>

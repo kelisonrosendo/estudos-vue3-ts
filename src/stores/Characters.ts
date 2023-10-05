@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { computed } from 'vue'
 import { useFetch } from '@/composables'
 
 interface Info {
@@ -23,25 +24,28 @@ interface Result {
 }
 
 interface State {
+  isLoading: boolean
   info: Info | {}
-  results: Array<Result> | []
+  results: Result[]
 }
 
 export const useCharactersStore = defineStore('characters', {
   state: (): State => ({
+    isLoading: false,
     info: {},
     results: []
   }),
 
   actions: {
-    async getData(url = 'https://rickandmortyapi.com/api/character') {
-      const { data } = useFetch({
+    async getData(url: string = 'https://rickandmortyapi.com/api/character') {
+      const { isLoading, data } = useFetch({
         key: 'characters',
         url
       })
 
-      this.info = data.value.info
-      this.results = data.value.results
+      this.isLoading = computed<boolean>(() => isLoading?.value)
+      this.info = computed<Info>(() => data.value?.info)
+      this.results = computed<Result[]>(() => data.value?.results)
     }
   }
 })

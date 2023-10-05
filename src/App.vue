@@ -1,5 +1,9 @@
 <template>
-  <header class="fixed top-0 w-full"></header>
+  <header class="fixed top-0 w-full bg-slate-100">
+    <div class="flex items-center justify-center w-full">
+      <img src="@/assets/logo.png" alt="Rick And Morty Logo" class="w-60" />
+    </div>
+  </header>
   <main class="bg-slate-100">
     <ScrollArea class="h-[calc(100vh-60px)] mt-[60px] p-10 rounded-md">
       <RouterView v-slot="{ Component }">
