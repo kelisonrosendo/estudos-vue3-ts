@@ -10,7 +10,10 @@
         <RouterLink to="/characters"> Characters </RouterLink>
       </li>
     </ul>
-    <Badge v-if="charactersRoute" class="bg-green-300 text-slate-800 text-sm">
+    <Badge
+      v-if="charactersRoute"
+      class="bg-green-400 hover:bg-green-500 text-slate-800 cursor-pointer"
+    >
       Characters found: {{ charactersCounter }}
     </Badge>
   </nav>
