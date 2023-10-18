@@ -25,20 +25,19 @@ import { computed } from 'vue'
 import { Card, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
-interface Locations {
+interface Location {
   name: string
-  url: string
 }
 
-interface Props {
+interface Prop {
   name: string
   image: string
   status: string
   specie: string
-  location: Locations
+  location: Location
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Prop>(), {
   image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
   status: 'unknown',
   specie: 'Unknown'

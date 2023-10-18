@@ -1,8 +1,6 @@
 <template>
-  <header class="fixed top-0 w-full bg-slate-100">
-    <div class="flex items-center justify-center w-full">
-      <img src="@/assets/logo.png" alt="Rick And Morty Logo" class="w-60" />
-    </div>
+  <header class="fixed top-0 w-full shadow-md">
+    <NavigationMenu class="h-[60px] max-w-[1230px] m-auto" />
   </header>
   <main class="bg-slate-100">
     <ScrollArea class="h-[calc(100vh-60px)] mt-[60px] p-10 rounded-md">
@@ -11,7 +9,7 @@
           <Transition mode="out-in">
             <KeepAlive>
               <Suspense>
-                <component :is="Component" />
+                <component class="max-w-[1230px] m-auto" :is="Component" />
                 <template #fallback> <Loader /> </template>
               </Suspense>
             </KeepAlive>
@@ -23,6 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { Loader } from '@/components'
+import { Loader, NavigationMenu } from '@/components'
 import { ScrollArea } from '@/components/ui/scroll-area'
 </script>

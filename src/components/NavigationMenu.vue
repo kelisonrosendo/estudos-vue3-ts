@@ -1,6 +1,6 @@
 <template>
-  <nav class="h-[60px] bg-white shadow-md flex items-center justify-center">
-    <ul class="w-full h-full flex items-center justify-center gap-10">
+  <nav class="flex items-center">
+    <ul class="w-full h-full flex items-center gap-10">
       <li class="flex items-center gap-2">
         <Home :size="22" />
         <RouterLink to="/"> Home </RouterLink>

@@ -1,22 +1,54 @@
-import { useQuery } from '@tanstack/vue-query'
+import axios from 'axios'
 
-interface Param {
-  key: string
-  url: string
+interface httpMethod {
+  get: string
+  post: string
+  patch: string
+  put: string
+  delete: string
 }
 
-const useFetch = ({ key, url }: Param) => {
-  const { isLoading, isFetching, isError, data, error } = useQuery({
-    queryKey: [key],
-    queryFn: async () => await fetch(url).then((response) => response.json())
-  })
+interface Param {
+  method: string
+  url: string
+  data: object
+  onSuccess: ({ data }: any) => void
+  onError: ({ response }: any) => void
+  onFinally: () => void
+}
 
-  return {
-    isLoading,
-    isFetching,
-    isError,
-    data,
-    error
+const httpMethods: httpMethod = {
+  get: 'get',
+  post: 'post',
+  patch: 'patch',
+  put: 'put',
+  delete: 'delete'
+}
+
+const useFetch = ({ method, url, data, onSuccess, onError, onFinally }: Param) => {
+  try {
+    if (!httpMethods[method as keyof httpMethod]) {
+      throw new Error(`Método HTTP inválido. Use: ${Object.values(httpMethods)}.`)
+    }
+
+    if (!url) {
+      throw new Error('O parâmetro "url" é obrigatório para criação da instância do serviço.')
+    }
+
+    if (method === httpMethods.get && data) {
+      throw new Error('O método "get" não pode enviar conteúdo no corpo da requisição.')
+    }
+
+    return axios({
+      method,
+      url,
+      data
+    })
+      .then(onSuccess)
+      .catch(onError)
+      .finally(onFinally)
+  } catch (error) {
+    console.error(error)
   }
 }
 
