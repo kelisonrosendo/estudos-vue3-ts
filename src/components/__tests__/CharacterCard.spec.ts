@@ -12,8 +12,7 @@ describe('CharacterCard', () => {
         status: '',
         specie: '',
         location: {
-          name: '',
-          url: ''
+          name: ''
         }
       }
     })
