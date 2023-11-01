@@ -1,7 +1,7 @@
 <template>
   <Card class="h-full">
     <CardContent>
-      <img class="my-6 rounded-t-lg" :src="image" :alt="name" />
+      <img class="w-full my-6 rounded-t-lg" :src="image" :alt="name" />
       <CardTitle> {{ name }} </CardTitle>
       <CardDescription>{{ specie }}</CardDescription>
     </CardContent>

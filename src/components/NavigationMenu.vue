@@ -1,18 +1,22 @@
 <template>
-  <nav class="w-full flex items-center justify-between">
-    <ul class="flex gap-10">
-      <li class="flex items-center gap-2">
-        <Home :size="22" />
-        <RouterLink to="/"> Home </RouterLink>
+  <nav class="w-full px-10 flex items-center justify-between">
+    <ul class="w-full flex max-sm:justify-center gap-10">
+      <li>
+        <RouterLink to="/" class="flex flex-col items-center hover:text-slate-500">
+          <Home :size="18" />
+          <span class="mt-1 text-sm">Home</span>
+        </RouterLink>
       </li>
-      <li class="flex items-center gap-2">
-        <Contact2 :size="22" />
-        <RouterLink to="/characters"> Characters </RouterLink>
+      <li>
+        <RouterLink to="/characters" class="flex flex-col items-center hover:text-slate-500">
+          <Contact2 :size="18" />
+          <span class="mt-1 text-sm">Characters</span>
+        </RouterLink>
       </li>
     </ul>
     <Badge
       v-if="charactersRoute"
-      class="bg-green-400 hover:bg-green-500 text-slate-800 cursor-pointer"
+      class="whitespace-nowrap bg-green-400 hover:bg-green-500 text-slate-800 cursor-pointer max-sm:hidden"
     >
       Characters found: {{ charactersCounter }}
     </Badge>

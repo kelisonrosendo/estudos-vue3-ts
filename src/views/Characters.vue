@@ -3,12 +3,12 @@
     <Loader />
   </div>
   <div v-else>
-    <div class="p-1 grid lg:grid-cols-2">
+    <div class="p-1 grid sm:grid-cols-2">
       <div class="flex gap-4 mb-4">
         <Input v-model="queryParams.search" placeholder="Search by character name" />
         <Button @click="onSearch"> Search </Button>
       </div>
-      <div class="flex justify-end gap-4 mb-4">
+      <div class="flex sm:justify-end max-sm:justify-center gap-4 mb-4">
         <Button :disabled="!store.info.prev" @click="onLoad('prev')"> Previous </Button>
         <Button :disabled="!store.info.next" @click="onLoad('next')"> Next </Button>
       </div>
